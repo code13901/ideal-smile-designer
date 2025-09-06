@@ -1,0 +1,23 @@
+{
+  "name": "ideal-smile-designer",
+  "version": "1.0.0",
+  "description": "AI-powered dental smile analysis and design app using Gemini 2.5 Flash",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "nodemon server.js"
+  },
+  "keywords": ["ai", "dental", "smile", "gemini", "hackathon", "nano-banana"],
+  "author": "Your Name",
+  "license": "MIT",
+  "dependencies": {
+    "@google/genai": "^0.3.0",
+    "express": "^4.21.1",
+    "multer": "^1.4.5-lts.1",
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.7"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.7"
+  }
+}

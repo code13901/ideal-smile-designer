@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🦷✨ Ideal Smile Designer</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <h1>🦷✨ Ideal Smile Designer</h1>
+            <p class="subtitle">AI-powered smile analysis and design using Gemini 2.5 Flash</p>
+        </header>
+
+        <main class="main">
+            <div class="upload-section" id="uploadSection">
+                <div class="upload-box" id="uploadBox">
+                    <div class="upload-icon">📷</div>
+                    <h2>Upload Your Smile Photo</h2>
+                    <p>Take a close-up photo showing your teeth for AI analysis</p>
+                    <input type="file" id="fileInput" accept="image/*" hidden>
+                    <button class="upload-btn" onclick="document.getElementById('fileInput').click()">
+                        Choose Photo
+                    </button>
+                    <div class="tips">
+                        <strong>✨ Tips for best results:</strong>
+                        <ul>
+                            <li>Good lighting on your face</li>
+                            <li>Smile showing your teeth clearly</li>
+                            <li>Close-up shot of your mouth area</li>
+                            <li>Keep your head straight</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="analysis-section" id="analysisSection" style="display: none;">
+                <div class="loading" id="loadingState">
+                    <div class="spinner"></div>
+                    <h3>Analyzing your smile...</h3>
+                    <p>Our AI is examining your dental features and creating your ideal smile design</p>
+                </div>
+
+                <div class="results" id="resultsState" style="display: none;">
+                    <div class="images-comparison">
+                        <div class="image-container">
+                            <h3>Your Original Smile</h3>
+                            <img id="originalImage" alt="Original smile">
+                        </div>
+                        <div class="image-container">
+                            <h3>Your Ideal Smile Design</h3>
+                            <img id="designedImage" alt="Ideal smile design">
+                            <div class="download-btn-container">
+                                <button class="download-btn" id="downloadBtn">Download Design</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="analysis-details">
+                        <h3>AI Dental Analysis & Recommendations</h3>
+                        <div id="analysisText" class="analysis-text"></div>
+                    </div>
+
+                    <div class="actions">
+                        <button class="secondary-btn" onclick="startOver()">Analyze Another Photo</button>
+                        <button class="primary-btn" onclick="shareResults()">Share Results</button>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <footer class="footer">
+            <p>Built with ❤️ using Gemini 2.5 Flash for the Nano Banana Hackathon</p>
+        </footer>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
