@@ -94,31 +94,45 @@ app.post('/analyze-smile', upload.single('image'), async (req, res) => {
 
 // Function to analyze current smile
 async function analyzeCurrentSmile(base64Image, mimeType) {
-    const prompt = `As a professional dental aesthetics AI, analyze this close-up smile photo in detail. Provide a comprehensive analysis including:
+    const prompt = `As a professional dental aesthetics AI, analyze this close-up smile photo in detail. Format your response using clear headers and numbered points for easy reading.
 
-1. **Dental Assessment:**
-   - Tooth alignment and positioning
-   - Spacing between teeth
-   - Tooth color and whiteness level
-   - Tooth shape and proportions
-   - Gum line symmetry and health appearance
-   
-2. **Smile Characteristics:**
-   - Smile width and proportions
-   - Tooth visibility when smiling
-   - Lip line and how it frames the teeth
-   - Overall smile symmetry
+## Dental Assessment
 
-3. **Professional Recommendations:**
-   - Specific improvements that could enhance the smile
-   - Priority areas for enhancement
-   - Expected outcomes with improvements
+1. **Tooth alignment and positioning:** [Analyze the alignment and positioning of teeth]
 
-4. **Positive Aspects:**
-   - Current strengths of the smile
-   - Features that are already well-aligned with ideal standards
+2. **Spacing between teeth:** [Evaluate spacing, gaps, or crowding]
 
-Please provide detailed, professional, and encouraging feedback that would help someone understand their current smile and potential improvements. Be specific but supportive in your analysis.`;
+3. **Tooth color and whiteness level:** [Assess current tooth color and whiteness]
+
+4. **Tooth shape and proportions:** [Examine tooth shapes and proportional relationships]
+
+5. **Gum line symmetry and health appearance:** [Evaluate gum health and symmetry]
+
+## Smile Characteristics
+
+1. **Smile width and proportions:** [Analyze overall smile dimensions]
+
+2. **Tooth visibility when smiling:** [Assess how much teeth show when smiling]
+
+3. **Lip line and framing:** [Evaluate how lips frame the teeth]
+
+4. **Overall smile symmetry:** [Assess bilateral symmetry]
+
+## Professional Recommendations
+
+1. **Priority improvements:** [List specific areas that could be enhanced]
+
+2. **Expected outcomes:** [Describe potential results of improvements]
+
+3. **Treatment considerations:** [Suggest possible approaches]
+
+## Positive Aspects
+
+1. **Current strengths:** [Highlight existing positive features]
+
+2. **Well-aligned features:** [Note aspects that are already ideal]
+
+Provide detailed, professional, and encouraging feedback. Be specific but supportive in your analysis.`;
 
     try {
         const response = await genai.models.generateContent({

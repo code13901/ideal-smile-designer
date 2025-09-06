@@ -14,7 +14,7 @@
    - **Name**: ideal-smile-designer
    - **Environment**: Node
    - **Build Command**: `npm install`
-   - **Start Command**: `npm start`
+   - **Start Command**: `node server.js`
    - **Plan**: Free
 
 ### Step 3: Set Environment Variables

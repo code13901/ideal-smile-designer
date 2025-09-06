@@ -103,27 +103,65 @@ function displayResults() {
     }
 }
 
-// Format analysis text with better structure
+// Format analysis text with proper markdown support
 function formatAnalysisText(text) {
-    // Split text into sections and add formatting
-    const lines = text.split('\n');
-    let formattedText = '';
+    if (!text) return '';
+    
+    let formattedText = text;
+    
+    // Convert markdown headers
+    formattedText = formattedText.replace(/### (.+)/g, '<h3 class="analysis-section-title">$1</h3>');
+    formattedText = formattedText.replace(/## (.+)/g, '<h2 class="analysis-main-title">$1</h2>');
+    
+    // Convert bold text
+    formattedText = formattedText.replace(/\*\*(.+?)\*\*/g, '<strong class="analysis-highlight">$1</strong>');
+    
+    // Convert numbered lists
+    formattedText = formattedText.replace(/^(\d+)\. (.+)/gm, '<div class="analysis-point"><span class="point-number">$1.</span> <strong>$2</strong></div>');
+    
+    // Convert regular paragraphs (lines that don't start with numbers or special chars)
+    const lines = formattedText.split('\n');
+    let finalText = '';
+    let inList = false;
     
     for (let line of lines) {
         line = line.trim();
-        if (line === '') continue;
+        if (line === '') {
+            if (inList) {
+                finalText += '</div>';
+                inList = false;
+            }
+            continue;
+        }
         
-        // Check if line is a heading (contains keywords like "Analysis:", "Recommendations:", etc.)
-        if (line.includes(':') && line.length < 50) {
-            formattedText += `<h4>${line}</h4>`;
-        } else if (line.startsWith('-') || line.startsWith('•')) {
-            formattedText += `<li>${line.substring(1).trim()}</li>`;
+        if (line.includes('<h3') || line.includes('<h2')) {
+            if (inList) {
+                finalText += '</div>';
+                inList = false;
+            }
+            finalText += line;
+        } else if (line.includes('<div class="analysis-point"')) {
+            if (!inList) {
+                finalText += '<div class="analysis-list">';
+                inList = true;
+            }
+            finalText += line;
+        } else if (line && !line.includes('<')) {
+            if (inList) {
+                finalText += '</div>';
+                inList = false;
+            }
+            finalText += `<p class="analysis-paragraph">${line}</p>`;
         } else {
-            formattedText += `<p>${line}</p>`;
+            finalText += line;
         }
     }
     
-    return formattedText;
+    if (inList) {
+        finalText += '</div>';
+    }
+    
+    return finalText;
 }
 
 // Download the designed smile image
