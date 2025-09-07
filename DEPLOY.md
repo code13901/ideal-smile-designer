@@ -19,7 +19,7 @@
 
 ### Step 3: Set Environment Variables
 In Render dashboard, add:
-- `GEMINI_API_KEY` = `AIzaSyAFJrDpvipCA3R7v1F5ypoRB5MKiEKKkvM`
+- `GEMINI_API_KEY` = `your_actual_gemini_api_key_here`
 - `NODE_ENV` = `production`
 
 ✅ **Your app will be live at**: `https://ideal-smile-designer.onrender.com`
@@ -36,7 +36,7 @@ In Render dashboard, add:
 
 ### Step 2: Environment Variables
 Add in Railway dashboard:
-- `GEMINI_API_KEY` = `AIzaSyAFJrDpvipCA3R7v1F5ypoRB5MKiEKKkvM`
+- `GEMINI_API_KEY` = `your_actual_gemini_api_key_here`
 
 ✅ **Free $5/month credit**
 

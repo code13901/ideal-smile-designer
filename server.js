@@ -10,8 +10,13 @@ const app = express();
 const PORT = process.env.PORT || 3000;
 
 // Initialize Gemini AI
+if (!process.env.GEMINI_API_KEY) {
+    console.error('❌ GEMINI_API_KEY environment variable is required!');
+    process.exit(1);
+}
+
 const genai = new GoogleGenAI({
-    apiKey: process.env.GEMINI_API_KEY || 'AIzaSyAFJrDpvipCA3R7v1F5ypoRB5MKiEKKkvM'
+    apiKey: process.env.GEMINI_API_KEY
 });
 
 // Middleware
